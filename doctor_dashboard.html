@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome, Dr. Smith</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#appointments">View Appointments</a></li>
+                <li><a href="#manage">Manage Appointments</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="profile">
+        <h2>Dr. Smith</h2>
+        <figure>
+            <img src="assets/images/smith.png" alt="Dr. Smith" width="300" height="200">
+            <figcaption>Dr. Smith - Cardiologist</figcaption> 
+        </figure>
+    </section>
+
+    <section id="appointments">
+        <h2>View Appointments</h2>
+        <table>
+            <tr>
+                <th>Patient Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>John Doe</td>
+                <td>2026-02-16</td>
+                <td>10:00 AM</td>
+                <td>Pending</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="manage">
+        <h2>Manage Appointments</h2>
+        <table>
+            <tr>
+                <th>Patient</th>
+                <th>Doctor</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>John Doe</td>
+                <td>Dr. Smith</td>
+                <td>2026-02-16</td>
+                <td>10:00 AM</td>
+                <td>Pending</td>
+                <td>
+                    <button>Approve</button>
+                    <button>Reject</button>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+</body>
+</html>
