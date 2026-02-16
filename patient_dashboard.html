@@ -56,7 +56,7 @@
                 <td>10:00 AM</td>
                 <td>Confirmed</td>
                 <td>
-                    <button onclick="window.location.href='edit_appointment.html'">Edit</button>
+                    <a href="#edit">edit</a>
                     <form action="delete_appointment.php" method="post">
                         <input type="hidden" name="appointment_id" value="123">
                         <button type="submit">Delete</button>
@@ -64,6 +64,27 @@
                 </td>
             </tr>
         </table>
+    </section>
+
+    <section id="edit">
+        <h2>Edit Appointment</h2>
+        <form action="update_appointment.php" method="post">
+            <input type="hidden" name="appointment_id" value="123">
+            <label for="doctor">Select Doctor:</label>
+            <select id="doctor" name="doctor">
+                <option value="" disabled selected>Select</option>
+                <option value="dr_smith">Dr. Smith</option>
+                <option value="dr_jones">Dr. Jones</option>
+            </select><br><br>
+
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date"><br><br>
+
+            <label for="time">Select Time:</label>
+            <input type="time" id="time" name="time"><br><br>
+
+            <button type="submit">Update Appointment</button>
+        </form>
     </section>
 </body>
 

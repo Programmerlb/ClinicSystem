@@ -62,8 +62,14 @@
                 <td>10:00 AM</td>
                 <td>Pending</td>
                 <td>
-                    <button>Approve</button>
-                    <button>Reject</button>
+                    <form action="approve_appointment.php" method="post">
+                        <input type="hidden" name="appointment_id" value="123">
+                        <button type="submit">Approve</button>
+                    </form>
+                    <form action="reject_appointment.php" method="post">
+                        <input type="hidden" name="appointment_id" value="123">
+                        <button type="submit">Reject</button>
+                    </form>
                 </td>
             </tr>
         </table>
