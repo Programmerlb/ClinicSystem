@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
     <header>
@@ -26,53 +27,70 @@
         </figure>
     </section>
 
-    <section id="appointments">
+    <section id="appointments" class="appointments-section">
         <h2>View Appointments</h2>
-        <table>
-            <tr>
-                <th>Patient Name</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Status</th>
-            </tr>
-            <tr>
-                <td>John Doe</td>
-                <td>2026-02-16</td>
-                <td>10:00 AM</td>
-                <td>Pending</td>
-            </tr>
-        </table>
+        <div class="filter-controls">
+            <label for="filter-status">Filter by Status:</label>
+            <select id="filter-status" class="form-select" onchange="filterAppointments()">
+                <option value="">All Appointments</option>
+                <option value="pending">Pending</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="completed">Completed</option>
+            </select>
+        </div>
+        <div class="appointments-table-wrapper">
+            <table class="appointments-table">
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-appointment-id="1" data-status="pending">
+                        <td>John Doe</td>
+                        <td>2026-02-16</td>
+                        <td>10:00 AM</td>
+                        <td><span class="status-badge status-pending">Pending</span></td>
+                        <td class="actions-cell">
+                            <button class="btn btn-sm btn-info" onclick="viewDetails(1)">Details</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 
-    <section id="manage">
+    <section id="manage" class="manage-section">
         <h2>Manage Appointments</h2>
-        <table>
-            <tr>
-                <th>Patient</th>
-                <th>Doctor</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-            <tr>
-                <td>John Doe</td>
-                <td>Dr. Smith</td>
-                <td>2026-02-16</td>
-                <td>10:00 AM</td>
-                <td>Pending</td>
-                <td>
-                    <form action="approve_appointment.php" method="post">
-                        <input type="hidden" name="appointment_id" value="123">
-                        <button type="submit">Approve</button>
-                    </form>
-                    <form action="reject_appointment.php" method="post">
-                        <input type="hidden" name="appointment_id" value="123">
-                        <button type="submit">Reject</button>
-                    </form>
-                </td>
-            </tr>
-        </table>
+        <div class="appointments-table-wrapper">
+            <table class="appointments-table">
+                <thead>
+                    <tr>
+                        <th>Patient</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-appointment-id="123" data-status="pending">
+                        <td>John Doe</td>
+                        <td>2026-02-16</td>
+                        <td>10:00 AM</td>
+                        <td><span class="status-badge status-pending">Pending</span></td>
+                        <td class="actions-cell">
+                            <button class="btn btn-sm btn-success" onclick="approveAppointment(123)">Approve</button>
+                            <button class="btn btn-sm btn-danger" onclick="rejectAppointment(123)">Reject</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 
 </body>

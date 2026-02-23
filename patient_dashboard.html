@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Dashboard</title>
+    <link rel="stylesheet" href="assets/styles.css">
+
 </head>
 
 <body>
@@ -40,50 +42,63 @@
         </form>
     </section>
 
-    <section id="manage">
+    <section id="manage" class="appointments-section">
         <h2>Manage Appointments</h2>
-        <table>
-            <tr>
-                <th>Doctor</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-            <tr>
-                <td>Dr. Smith</td>
-                <td>2026-02-16</td>
-                <td>10:00 AM</td>
-                <td>Confirmed</td>
-                <td>
-                    <a href="#edit">edit</a>
-                    <form action="delete_appointment.php" method="post">
-                        <input type="hidden" name="appointment_id" value="123">
-                        <button type="submit">Delete</button>
-                    </form>
-                </td>
-            </tr>
-        </table>
+        <div class="appointments-table-wrapper">
+            <table class="appointments-table">
+                <thead>
+                    <tr>
+                        <th>Doctor</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-appointment-id="123">
+                        <td>Dr. Smith</td>
+                        <td>2026-02-16</td>
+                        <td>10:00 AM</td>
+                        <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                        <td class="actions-cell">
+                            <button class="btn btn-sm btn-info" onclick="editAppointment(123)">Edit</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteAppointment(123)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 
-    <section id="edit">
+    <section id="edit" class="edit-section" style="display:none;">
         <h2>Edit Appointment</h2>
-        <form action="update_appointment.php" method="post">
+        <form action="/api/update_appointment" method="post" class="appointment-form form-group">
             <input type="hidden" name="appointment_id" value="123">
-            <label for="doctor">Select Doctor:</label>
-            <select id="doctor" name="doctor">
-                <option value="" disabled selected>Select</option>
-                <option value="dr_smith">Dr. Smith</option>
-                <option value="dr_jones">Dr. Jones</option>
-            </select><br><br>
+            
+            <div class="form-field">
+                <label for="edit-doctor">Select Doctor:</label>
+                <select id="edit-doctor" name="doctor" class="form-select" required>
+                    <option value="" disabled selected>Choose a doctor</option>
+                    <option value="dr_smith">Dr. Smith - Cardiology</option>
+                    <option value="dr_jones">Dr. Jones - General Practice</option>
+                </select>
+            </div>
 
-            <label for="date">Select Date:</label>
-            <input type="date" id="date" name="date"><br><br>
+            <div class="form-field">
+                <label for="edit-date">Select Date:</label>
+                <input type="date" id="edit-date" name="date" required>
+            </div>
 
-            <label for="time">Select Time:</label>
-            <input type="time" id="time" name="time"><br><br>
+            <div class="form-field">
+                <label for="edit-time">Select Time:</label>
+                <input type="time" id="edit-time" name="time" required>
+            </div>
 
-            <button type="submit">Update Appointment</button>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Update Appointment</button>
+                <button type="button" class="btn btn-secondary" onclick="cancelEdit()">Cancel</button>
+            </div>
         </form>
     </section>
 </body>
